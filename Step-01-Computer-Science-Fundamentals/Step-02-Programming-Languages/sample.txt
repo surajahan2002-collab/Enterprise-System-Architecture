@@ -1,0 +1,2 @@
+The architecture of a system defines its success. 
+A polyglot software architect uses the right tool for the right job.
