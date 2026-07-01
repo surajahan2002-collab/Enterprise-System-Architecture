@@ -1,22 +1,36 @@
-# 🛠️ Step 09: Professional IDEs & Development Tooling
+ # 🛠️ Step 09: Professional IDEs & Development Tooling
+### Phase 1: Computer Science Foundations
 
-> *"A carpenter is only as good as their tools. An architect ensures that the entire development team operates within a standardized, high-performance environment."*
+> "A carpenter is only as good as their tools. An architect ensures that the entire development team operates within a standardized, high-performance environment."
 
-## 🏢 The Architect’s Toolkit (Shiraz Project Stack)
-We standardize our toolset to eliminate the "it works on my machine" problem:
+---
 
-* **IDE:** VS Code (for lightweight scripting) & IntelliJ IDEA (for enterprise Java/Spring).
-* **Code Quality:** SonarLint (Real-time static analysis).
-* **Diagramming:** Draw.io/Mermaid.js (for documenting the 7-phase roadmap).
-* **Containerization:** Docker (to bridge the gap between Dev and Prod environments).
+### 🔬 The Architect’s Toolkit
+To maintain architectural consistency and eliminate the "it works on my machine" phenomenon, we standardize our development environment across the team:
 
-## 🚀 The Power-User Philosophy
-Efficiency comes from automation, not just typing. We prioritize:
-1. **Command Line Mastery:** Using terminal-based tools for faster deployment.
-2. **Keyboard-Driven Development:** Minimizing mouse usage to maintain flow state.
-3. **Automated Formatting:** Using Prettier/Black to enforce code style without human effort.
+*   **Integrated Development Environments (IDEs):** 
+    *   **VS Code:** Optimized for lightweight scripting, web development, and cloud-native tasks.
+    *   **IntelliJ IDEA:** The preferred powerhouse for complex, enterprise-grade back-end systems (Java/Spring/Kotlin).
+*   **Code Quality & Static Analysis:** 
+    *   **SonarLint:** Integrated for real-time code quality monitoring, ensuring technical debt is addressed before the commit stage.
+*   **System Design & Documentation:** 
+    *   **Mermaid.js / Draw.io:** Utilizing these tools to maintain living documentation for architectural diagrams, sequence flows, and system roadmaps.
+*   **Infrastructure Environment:** 
+    *   **Docker:** Essential for containerization, ensuring parity between local development and production environments.
 
+---
 
+### 🚀 The Power-User Philosophy
+True engineering efficiency is driven by automation and mastery of the development environment:
 
-## 🎯 Architectural Takeaway
-By standardizing the IDE and tooling ecosystem, we reduce onboarding time for new developers and ensure that every line of code is validated by automated tools before it reaches the commit stage.
+1.  **Command-Line Mastery:** Prioritizing CLI-based workflows for faster build, test, and deployment cycles.
+2.  **Keyboard-Driven Development:** Emphasizing keyboard shortcuts and editor configurations to maintain a deep state of 'Flow' and minimize context switching.
+3.  **Automated Formatting:** Enforcing consistent code standards (using tools like Prettier, Black, or ESLint) to eliminate manual formatting efforts and standardize codebase readability.
+
+---
+
+### 🏆 Architectural Takeaway
+By standardizing the IDE and tooling ecosystem, an architect reduces the cognitive load on the team. This standardization slashes onboarding time for new developers and guarantees that every line of code is validated by automated tools, ensuring a stable and predictable software delivery lifecycle.
+
+---
+*Status: Phase 1 (Computer Science Foundations) - Step 09/52*
