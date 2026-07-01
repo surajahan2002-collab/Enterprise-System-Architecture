@@ -1,46 +1,45 @@
-# 🔄 Step 05: Software Development Life Cycle (SDLC)
+ # 🚀 Step 05: Software Development Life Cycle (SDLC)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/SDLC-Engineering_Process-00599C?style=for-the-badge" alt="SDLC"/>
-  <img src="https://img.shields.io/badge/Methodology-Agile_Process-green?style=for-the-badge" alt="Agile"/>
-</p>
-
-> 💡 **The Architect's Creed:** *"A project without an SDLC is like a building without a blueprint. We do not just build features; we engineer repeatable, measurable, and high-quality outcomes."*
-
-Welcome to the **SDLC** module. This step bridges the gap between raw development and enterprise project management. An effective SDLC ensures that the Shiraz Municipality project transitions from a vision to a reliable, scalable production system.
+> **"A project without an SDLC is like a building without a blueprint. We do not just build features; we engineer repeatable, measurable, and high-quality outcomes."**
 
 ---
 
-## 🔬 The SDLC Architectural Model
+### 🔬 The Architectural Model
+We employ an **Agile-Hybrid SDLC Model**—the sweet spot between structured planning and rapid, iterative delivery.
 
-We utilize the **Agile-Hybrid SDLC Model**, which combines the structure of requirements planning with the flexibility of iterative delivery.
-
-1. **Requirement Analysis:** Converting city-level stakeholder needs into technical specs.
-2. **System Design:** Architecting the 3-tier infrastructure (Edge, Backend, Data Engine).
-3. **Implementation:** Writing modular, secure, and documented code.
-4. **Testing & QA:** Automated validation using CI pipelines.
-5. **Deployment:** Infrastructure-as-Code (IaC) rollouts.
-6. **Maintenance:** Continuous observability and feedback loops.
-
-
-
-[Image of software development life cycle stages]
-
+| Phase | Focus |
+| :--- | :--- |
+| **Requirements** | Translating business needs into technical specs. |
+| **System Design** | Building robust, multi-tier architectures. |
+| **Implementation** | Clean, modular, and maintainable code. |
+| **Testing & QA** | Automated validation via CI/CD. |
+| **Deployment** | Scalable IaC (Infrastructure-as-Code). |
+| **Maintenance** | Continuous monitoring and feedback loops. |
 
 ---
 
-## 🏢 Enterprise Case Study: Shiraz Municipality Smart Market
-In our smart POS and weighbridge projects, the SDLC is the difference between project success and budget burnout. 
+### 🏢 Case Study: Smart Market Infrastructure
+In high-stakes environments—like **Smart POS and Industrial Weighbridge systems**—the SDLC is the ultimate guardrail against budget burnout.
 
-* **The Challenge:** Frequent changes in market regulations.
-* **The SDLC Solution:** We implement **Two-Week Sprints**. Instead of building the entire system at once, we release the 'Smart Weighbridge' module first, gather feedback, and iterate. This reduces architectural risk by 70%.
+* **The Challenge:** Rapidly shifting regulatory requirements.
+* **The Fix:** **Two-Week Sprint Cycles**. We prioritize modular releases (e.g., the 'Smart Weighbridge' unit) to gather field feedback early, **slashing architectural risk by ~70%.**
 
 ---
 
-## ⚙️ Proof of Concept: The SDLC Pipeline Manager
-*(Source code files are included in this directory)*
+### ⚙️ Automation: The Phase-Gate Manager
+*(Source code located in `/scripts`)*
 
-To formalize the SDLC, we have created an automated **Phase-Gate Manager**. This script prevents the team from moving to the 'Deployment' phase unless 'Testing' and 'Documentation' are marked as completed.
+We’ve engineered an automated **Phase-Gate Manager** to enforce quality standards. This script acts as a gatekeeper, preventing any deployment that hasn't passed mandatory **Testing** and **Documentation** benchmarks.
 
-### 🏆 Architectural Takeaway
-SDLC is the pulse of a healthy development ecosystem. By enforcing structured phases and automated gates, an architect guarantees quality, predictability, and alignment with the municipality's strategic goals.
+---
+
+### 🗺️ Execution Roadmap: The Delivery Flow
+
+```mermaid
+graph LR
+    A[Requirement] --> B[Design]
+    B --> C[Implementation]
+    C --> D{Gate: QA}
+    D -- Passed --> E[Deployment]
+    D -- Failed --> C
+    E --> F[Monitoring]
