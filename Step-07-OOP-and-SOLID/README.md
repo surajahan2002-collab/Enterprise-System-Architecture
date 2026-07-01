@@ -51,4 +51,6 @@ engine.run()
 
 
 🎯 Architectural Takeaway
-By adhering to these principles, we prevent the "spaghetti code" trap. We have built an ecosystem where new sensors or payment methods can be plugged in without refactoring the core logic, effectively future-proofing the Municipality project.
+By adhering to these principles, we prevent the "spaghetti code" trap. We have built an ecosystem where
+new sensors or payment methods can be plugged in without refactoring the core logic, effectively future-proofing
+the Municipality project.
