@@ -1,4 +1,4 @@
-<div align="center">
+ <div align="center">
 
 # 🌐 Step 12: W3C Web Standards & UI Rendering Architecture
 
@@ -22,10 +22,8 @@ We engineered the UI layer to optimize the browser's rendering pipeline, ensurin
 
 ```mermaid
 flowchart LR
-    %% Browser Rendering Pipeline
     classDef html fill:#e34f26,stroke:#fff,color:#fff
     classDef css fill:#1572B6,stroke:#fff,color:#fff
-    classDef js fill:#f7df1e,stroke:#fff,color:#000
     classDef render fill:#00e676,stroke:#fff,color:#000
 
     HTML[HTML5 Stream]:::html --> DOM[DOM Tree]
@@ -34,6 +32,9 @@ flowchart LR
     CSSOM --> RENDER
     RENDER --> LAYOUT[Layout / Reflow]
     LAYOUT --> PAINT[Paint / Rasterize]
+
+
+
 
 🏗️ Engineering Focus: Semantic DOM & Spatial Grid
 Semantic HTML5 (AST Optimization): Replacing generic <div> soup with structural semantic elements (<header>, <main>, <aside>, <section>). This directly optimizes the browser's Abstract Syntax Tree (AST) parsing speed and guarantees enterprise-grade Accessibility (WCAG).
@@ -50,6 +51,7 @@ Execute the following to inspect the structural layout and CSS3 grid behavior in
 Open the step12_bda_dashboard.html file in any modern, WebKit-based browser (Chrome, Edge, Safari).
 
 Open Chrome DevTools (F12) -> Navigate to the Rendering tab -> Enable Paint flashing to verify that real-time CSS animations do not cause layout thrashing.
+
 
 
 
