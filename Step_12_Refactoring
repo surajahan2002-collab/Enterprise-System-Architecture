@@ -1,0 +1,20 @@
+# 🧠 Step 12: Legacy Codebase Refactoring & Architectural Debt Remediation
+
+## 📌 Architectural Context & Problem Definition
+In high-throughput enterprise systems, legacy infrastructures often degrade into high-coupling, low-cohesion anti-patterns. This module simulates a critical production crisis: a monolithic, tightly-coupled hardware event orchestrator managing smart POS terminals and physical weighbridges. 
+
+The legacy implementation suffered from catastrophic design flaws:
+1. **Violation of Open/Closed Principle (OCP):** Introducing a new IoT sensor type required invasive modifications to the core processing engine.
+2. **High Cyclomatic Complexity:** Deeply nested conditional logic (`if-else` chains) causing fragile execution paths and untestable code blocks.
+3. **Tight Coupling:** Direct dependency on concrete hardware drivers, blocking any attempt at automated Unit or Integration Testing.
+
+## 🏗️ Refactoring Strategy: Branch by Abstraction & Strategy Pattern
+To pay off the technical debt without causing production downtime, we applied the **Branch by Abstraction** design transition pattern alongside a **Polymorphic Factory & Strategy Pattern**:
+
+```text
+[Legacy Client] ──► [Abstraction Barrier: IHardwareStrategy]
+                          │
+         ┌────────────────┴────────────────┐
+         ▼                                 ▼
+[SmartPosProcessor]              [WeighbridgeProcessor]
+(Encapsulated ACID Logic)       (High-Throughput Parsing)
