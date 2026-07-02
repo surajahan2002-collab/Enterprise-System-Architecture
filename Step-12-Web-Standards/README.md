@@ -20,40 +20,25 @@ Instead of relying heavily on massive JavaScript payloads for structural layout,
 ### ⚙️ The Critical Rendering Path
 We engineered the UI layer to optimize the browser's rendering pipeline, ensuring 60 FPS (Frames Per Second) even during heavy data influx:
 
-```mermaid
-flowchart LR
-    classDef html fill:#e34f26,stroke:#fff,color:#fff
-    classDef css fill:#1572B6,stroke:#fff,color:#fff
-    classDef render fill:#00e676,stroke:#fff,color:#000
+    [HTML5 Stream] ──► [DOM Tree] ───┐
+                                     ├──► [Render Tree] ──► [Layout/Reflow] ──► [Paint/Rasterize]
+    [CSS3 Styles]  ──► [CSSOM Tree] ─┘
 
-    HTML[HTML5 Stream]:::html --> DOM[DOM Tree]
-    CSS[CSS3 Styles]:::css --> CSSOM[CSSOM Tree]
-    DOM --> RENDER[Render Tree]:::render
-    CSSOM --> RENDER
-    RENDER --> LAYOUT[Layout / Reflow]
-    LAYOUT --> PAINT[Paint / Rasterize]
+---
 
+## 🏗️ Engineering Focus: Semantic DOM & Spatial Grid
 
+1. **Semantic HTML5 (AST Optimization):** Replacing generic `<div>` soup with structural semantic elements (`<header>`, `<main>`, `<aside>`, `<section>`). This directly optimizes the browser's Abstract Syntax Tree (AST) parsing speed and guarantees enterprise-grade Accessibility (WCAG).
+   
+2. **CSS Custom Properties (O(1) Theming):** Implementing a highly scalable design system at the root level (`:root`). Utilizing CSS variables allows for dynamic theme switching without forcing the browser to recalculate the entire CSSOM.
 
+3. **CSS Grid Architecture (2D Spatial Layout):** Constructing a complex, responsive dashboard skeleton using CSS Grid. This native two-dimensional layout engine natively handles variable telemetry data cards without requiring expensive JavaScript positioning calculations.
 
-🏗️ Engineering Focus: Semantic DOM & Spatial Grid
-Semantic HTML5 (AST Optimization): Replacing generic <div> soup with structural semantic elements (<header>, <main>, <aside>, <section>). This directly optimizes the browser's Abstract Syntax Tree (AST) parsing speed and guarantees enterprise-grade Accessibility (WCAG).
+---
 
-CSS Custom Properties (O(1) Theming): Implementing a highly scalable design system at the root level (:root). Utilizing CSS variables allows for dynamic theme switching without forcing the browser to recalculate the entire CSSOM.
-
-CSS Grid Architecture (2D Spatial Layout): Constructing a complex, responsive dashboard skeleton using CSS Grid. This native two-dimensional layout engine natively handles variable telemetry data cards without requiring expensive JavaScript positioning calculations.
-
-🧪 Verification & Simulation Guide
+## 🧪 Verification & Simulation Guide
 The accompanying simulation demonstrates a dependency-free, zero-framework implementation of a BDA Monitoring layout.
 
 Execute the following to inspect the structural layout and CSS3 grid behavior in an isolated environment:
-
-Open the step12_bda_dashboard.html file in any modern, WebKit-based browser (Chrome, Edge, Safari).
-
-Open Chrome DevTools (F12) -> Navigate to the Rendering tab -> Enable Paint flashing to verify that real-time CSS animations do not cause layout thrashing.
-
-
-
-
-
-
+1. Open the `step12_bda_dashboard.html` file in any modern, WebKit-based browser (Chrome, Edge, Safari).
+2. Open **Chrome DevTools** (F12) -> Navigate to the **Rendering** tab -> Enable **Paint flashing** to verify that real-time CSS animations do not cause layout thrashing.
