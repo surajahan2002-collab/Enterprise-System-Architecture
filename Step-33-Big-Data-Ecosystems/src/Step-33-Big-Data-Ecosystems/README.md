@@ -1,4 +1,4 @@
-# 🐘 Step 33: Big Data Ecosystems (Hadoop, Spark)
+ # 🐘 Step 33: Big Data Ecosystems (Hadoop, Spark)
 
 ## 🎓 Academic Context: The 3 V's of Big Data
 As the Data-Driven Project Management (DDPM) system scales globally, the database architecture engineered in Phase 3 encounters physical limitations. When data characteristics expand across the **3 V's (Volume, Velocity, and Variety)**, traditional relational databases (RDBMS) suffer catastrophic performance degradation. This module transitions our architecture into the realm of **Distributed Computing**.
@@ -22,5 +22,33 @@ The `spark_telemetry_processor.py` file demonstrates core Big Data engineering p
 | **Lazy Evaluation** | Transformations (`filter`, `groupBy`) do not execute immediately. Spark builds a DAG (execution plan) first. | The Spark Catalyst Optimizer mathematically determines the most efficient way to execute the query before reading a single byte of data. |
 | **Columnar Storage (Parquet)** | Outputs are written in `.parquet` format rather than `.csv`. | Parquet drastically reduces I/O disk reads by storing data column-by-column, allowing analytical engines to skip irrelevant data. |
 
-## 🚀 Strategic Alignment
-We have successfully processed and aggregated millions of unrefined telemetry records into clean, mathematical insights. This aggregated Data Lake serves as the exact foundational fuel required for our next monumental shift: training predictive algorithms in **Step 34 (Machine Learning Foundations)**.
+## 💻 Execution Instructions (Local Development)
+To run the Big Data processor locally on your machine, you need to have Python and Apache Spark installed.
+
+1. **Install Dependencies:**
+   Ensure you have `pyspark` installed in your Python environment:
+   ```bash
+   pip install pyspark
+
+
+Execute the Pipeline:
+Run the processor directly using Python. Spark will automatically initialize a local cluster:
+
+
+python src/spark_telemetry_processor.py
+
+
+Expected Output:
+The console will output the distributed telemetry logs, and the processed data will be saved as a Parquet file in the specified output directory.
+
+
+
+
+🚀 Strategic Alignment
+We have successfully processed and aggregated millions of unrefined telemetry records into clean, mathematical insights. This aggregated Data Lake serves as the exact foundational fuel required for our next monumental shift: training predictive algorithms in Step 34 (Machine Learning Foundations).
+
+
+
+
+
+   
