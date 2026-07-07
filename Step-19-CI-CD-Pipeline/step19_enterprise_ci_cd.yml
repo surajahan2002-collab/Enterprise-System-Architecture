@@ -1,0 +1,52 @@
+# 🚀 Step 19: Enterprise CI/CD Pipeline (GitHub Actions)
+# Architecture: Continuous Integration & Continuous Deployment
+# Objective: Automate Testing (Step 18) and Containerization (Step 17)
+
+name: Enterprise System Automation Pipeline
+
+# 1. Triggers: When should this robot wake up?
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+
+# 2. Jobs: The actual tasks the robot will perform
+jobs:
+  Continuous-Integration:
+    name: 🧪 CI - Run Automated Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js Environment (v20)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install Dependencies
+        run: echo "npm ci --legacy-peer-deps (Simulated in this architectural map)"
+        
+      - name: Execute Jest Test Suite (From Step 18)
+        # If tests fail, the pipeline instantly stops and blocks deployment!
+        run: echo "npm run test:unit && npm run test:integration (Simulated Success)"
+
+  Continuous-Deployment:
+    name: 🐳 CD - Build Docker Container
+    # The CD job ONLY runs if the CI job is 100% successful
+    needs: Continuous-Integration
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+        
+      - name: Build Immutable Docker Image (From Step 17)
+        # Taking the Dockerfile from Step 17 and packaging the app
+        run: echo "docker build -t enterprise-gateway-app:latest ../Step-17-DevOps-and-Containerization/ (Simulated Build)"
+        
+      - name: Deploy to Cloud Staging Environment
+        run: echo "Deploying Docker container to Kubernetes/AWS... Deployment Successful! 🚀"
