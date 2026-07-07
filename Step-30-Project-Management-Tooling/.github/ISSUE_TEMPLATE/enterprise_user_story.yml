@@ -1,0 +1,47 @@
+# Architecture: Application Lifecycle Management (ALM) Configuration
+# Domain: Jira / GitHub Issues Workflows
+# Objective: Standardizing Agile User Stories and Definition of Done (DoD).
+
+name: "Enterprise Agile User Story"
+description: "Template for creating new feature requests tracked via Agile Boards"
+title: "[DDPM-XXX] Feature Request: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: "Ensure all fields are filled out per the Enterprise Requirements Engineering standard (Step 26)."
+
+  - type: textarea
+    id: user_story
+    attributes:
+      label: "User Story (BDD Format)"
+      description: "Define the requirement using AS A / I WANT / SO THAT format."
+      placeholder: |
+        As a [Role]
+        I want [Feature/Action]
+        So that [Business Value/Benefit]
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: "Acceptance Criteria (Gherkin)"
+      description: "List the exact verifiable conditions (Given/When/Then)."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: definition_of_done
+    attributes:
+      label: "Definition of Done (DoD) Checklist"
+      description: "Engineering requirements before this ticket can move to DONE."
+      options:
+        - label: "Unit and Integration Tests written and passing (Step 18)."
+          required: true
+        - label: "Code compiles with zero strict-mode warnings."
+          required: true
+        - label: "UI conforms strictly to the Design Tokens (Step 27)."
+          required: true
+        - label: "CI/CD Pipeline executes successfully in Staging (Step 19)."
+          required: true
