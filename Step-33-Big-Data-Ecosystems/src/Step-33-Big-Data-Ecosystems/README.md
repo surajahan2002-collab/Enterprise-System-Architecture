@@ -1,4 +1,4 @@
- # 🐘 Step 33: Big Data Ecosystems (Hadoop, Spark)
+  # 🐘 Step 33: Big Data Ecosystems (Hadoop, Spark)
 
 ## 🎓 Academic Context: The 3 V's of Big Data
 As the Data-Driven Project Management (DDPM) system scales globally, the database architecture engineered in Phase 3 encounters physical limitations. When data characteristics expand across the **3 V's (Volume, Velocity, and Variety)**, traditional relational databases (RDBMS) suffer catastrophic performance degradation. This module transitions our architecture into the realm of **Distributed Computing**.
