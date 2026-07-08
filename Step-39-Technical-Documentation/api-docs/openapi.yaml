@@ -1,0 +1,91 @@
+# Architecture: Docs-as-Code / API Contract
+# Domain: DDPM Enterprise API
+# Standard: OpenAPI Specification (OAS) 3.0.3
+
+openapi: 3.0.3
+info:
+  title: DDPM Enterprise API
+  description: Official documentation for the Data-Driven Project Management Core API, featuring AI Inference endpoints for risk analytics.
+  version: "1.0.0"
+  contact:
+    name: DDPM Architecture Team
+    email: architecture@enterprise.com
+
+servers:
+  - url: https://api.ddpm.enterprise/v1
+    description: Production Cluster
+  - url: http://localhost:8000/api/v1
+    description: Local Development Environment
+
+paths:
+  /predict/project-risk:
+    post:
+      summary: Evaluate Project Risk via AI Inference
+      description: Sends project telemetry to the Machine Learning engine (Random Forest) to predict failure probabilities.
+      tags:
+        - Predictive Analytics
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelemetryPayload'
+      responses:
+        '200':
+          description: AI Inference executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskPredictionResponse'
+        '401':
+          description: Unauthorized (Invalid JWT Token)
+        '422':
+          description: Validation Error (Malformed Payload)
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    TelemetryPayload:
+      type: object
+      required:
+        - budget_variance
+        - team_velocity
+        - overdue_tasks
+      properties:
+        budget_variance:
+          type: number
+          format: float
+          description: Deviation from the baseline budget (%)
+          example: 15.5
+        team_velocity:
+          type: number
+          format: float
+          description: Average story points completed per sprint
+          example: 42.0
+        overdue_tasks:
+          type: integer
+          description: Absolute count of critical overdue tasks
+          example: 4
+
+    RiskPredictionResponse:
+      type: object
+      properties:
+        prediction_status:
+          type: string
+          example: "SUCCESS"
+        risk_assessment:
+          type: object
+          properties:
+            is_critical_risk:
+              type: boolean
+              example: true
+            recommended_action:
+              type: string
+              example: "Immediate Audit Required"
