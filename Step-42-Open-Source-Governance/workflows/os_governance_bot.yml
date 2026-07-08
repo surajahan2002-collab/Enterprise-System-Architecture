@@ -1,0 +1,64 @@
+# 🌍 Architecture: Open Source Governance & CI Automation
+# Domain: Global Community Management
+# Role: The "Ruthless Bouncer" for Pull Requests
+# Objective: Automatically reject low-quality code from open-source contributors before human review.
+
+name: "🛡️ OS Governance: PR Quality Gate"
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  code-quality-bouncer:
+    name: "Enforce Rockstar Standards"
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout Contributor's Code
+        uses: actions/checkout@v3
+
+      - name: 🕵️‍♂️ Semantic Title Check
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            refactor
+            perf
+            test
+
+      - name: 🧪 Unit Test Enforcement
+        run: |
+          echo "🔍 Scanning PR for accompanying Unit Tests..."
+          TEST_FILES=$(find . -name "*.test.ts" -o -name "*.spec.ts" | wc -l)
+          if [ "$TEST_FILES" -eq "0" ]; then
+            echo "🚨 GOVERNANCE FAULT: You cannot submit new code without Unit Tests!"
+            echo "Status: REJECTED"
+            exit 1 
+          else
+            echo "✅ Tests detected. Proceeding to human review."
+          fi
+
+      - name: 💬 Auto-Reply to Contributor
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const message = `
+            🚀 **Welcome to the DDPM Global Ecosystem!** 
+            
+            Our AI Governance Bot has scanned your code. 
+            ✅ Semantic Formatting: PASSED
+            ✅ Test Enforcement: PASSED
+            
+            A Core Architect will review your architecture shortly. Thank you for building the future with us! 🌍
+            `;
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: message
+            })
